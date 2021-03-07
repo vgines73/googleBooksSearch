@@ -5,9 +5,11 @@ import axios from "axios";
 import Saved from './Pages/Saved'
 import Search from "./Pages/Search"
 import Books from "./Pages/Books"
+import Nav from "./Components/Nav/Nav";
 function App() {
+  const [books, setBooks] = useState([])
   const getAll = async () => {
-    const { data } = await axios.get("/book")
+    const { data } = await axios.get("/books")
     console.log(data);
   }
   useEffect(() => {
@@ -16,11 +18,15 @@ function App() {
   }, [])
   return (
     <div className="App">
+      <Nav />
+
       <Router>
         <Switch>
           <Route path="/saved" component={Saved} />
           <Route path="/search" component={Search}/>
-          <Route path="/books" component={Books}/>
+          <Route path="/books">
+            <Books/>
+          </Route>
           <Route path="/" component={Books}/>
         </Switch>
       </Router>
