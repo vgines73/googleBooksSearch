@@ -8,6 +8,7 @@ module.exports = {
       res.json(findBook);
     } catch (error) {
       console.log("error with getOne:", error);
+      res.send(error)
     }
   },
 
@@ -17,6 +18,7 @@ module.exports = {
       res.json(allBooks);
     } catch (error) {
       console.log("error with getAll:", error);
+      res.send(error)
     }
   },
 
@@ -32,6 +34,7 @@ module.exports = {
       res.json(await newPost.save());
     } catch (error) {
       console.log("error with postBook:", error);
+      res.send(error)
     }
   },
 
@@ -41,15 +44,17 @@ module.exports = {
       res.json(updateBook);
     } catch (error) {
       console.log("error with updateThatBook:", error);
+      res.send(error)
     }
   },
 
   removeThatBook: async (req, res) => {
     try {
-      const removeBook = await Book.findById({ _id: req.params.id });
+      const removeBook = await Book.findByIdandDelete({ _id: req.params.id });
       res.json(removeBook);
     } catch (error) {
       console.log("error with removeThatBook:", error);
+      res.send(error)
     }
   },
 };

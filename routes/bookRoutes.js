@@ -7,14 +7,14 @@ const {
   removeThatBook,
 } = require("../controllers/BookController");
 
-router.get("/", getOne);
+router.get("/:id", getOne);
 
 router.get("/", getAll);
 
 router.post("/", postBook);
 
-router.patch("/", updateThatBook);
+router.patch("/:id", updateThatBook);
 
-router.delete("/", removeThatBook);
+router.delete("/:id", removeThatBook);
 
 module.exports = router;
