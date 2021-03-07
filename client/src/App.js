@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom"
 import "./App.css";
 import axios from "axios";
@@ -6,10 +6,11 @@ import Saved from './Pages/Saved'
 import Search from "./Pages/Search"
 import Books from "./Pages/Books"
 import Nav from "./Components/Nav/Nav";
+const API_KEY = require("dotenv")
 function App() {
-  const [books, setBooks] = useState([])
+  // const [books, setBooks] = useState([])
   const getAll = async () => {
-    const { data } = await axios.get("/books")
+    const { data } = await axios.get("https://www.googleapis.com/books" + API_KEY) 
     console.log(data);
   }
   useEffect(() => {

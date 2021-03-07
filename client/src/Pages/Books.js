@@ -1,10 +1,10 @@
 import React from "react";
-import Cards from "../Components/Cards/Cards";
+// import Cards from "../Components/Cards/Cards";
 
 const Books = (props) => {
   return (
     <div>
-      {props.books.map((book) => (
+      {/* {props.books.map((book) => (
         <Cards
           title={book.title}
           authors={book.authors}
@@ -13,7 +13,7 @@ const Books = (props) => {
           link={book.link}
         />
 
-      ))}
+      ))} */}
       <h1>hello from books</h1>
     </div>
   );

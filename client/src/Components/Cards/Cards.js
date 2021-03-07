@@ -1,9 +1,13 @@
 import React from "react";
-
+const styles = {
+  cardstyles: {
+    width: "18rem"
+  }
+}
 const Cards = (props) => {
   return (
     <div>
-      <div className="card" style="width: 18rem;">
+      <div className="card" style={styles.cardstyles}>
         <img src={props.image} className="card-img-top" alt="book" />
         <div className="card-body">
           <h3 className="card-title">{props.title}</h3>
