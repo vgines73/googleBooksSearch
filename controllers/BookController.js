@@ -40,8 +40,15 @@ module.exports = {
 
   updateThatBook: async (req, res) => {
     try {
-      const updateBook = await Book.findOneAndUpdate({ _id: req.params.id });
-      res.json(updateBook);
+      const updateBook = await Book.findById({ _id: req.params.id });
+      const { title, authors, description, image, link } = req.body;
+      if (title) updateBook.title = title;
+      if (authors) updateBook.authors = authors;
+      if (description) updateBook.description = description;
+      if (image) updateBook.image = image;
+      if (link) updateBook.link = link;
+
+      res.json(await updateBook.save());
     } catch (error) {
       console.log("error with updateThatBook:", error);
       res.send(error)
