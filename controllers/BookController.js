@@ -46,10 +46,10 @@ module.exports = {
 
   removeThatBook: async (req, res) => {
     try {
-      const removeBook = await Book.findById({ _id: req.params.id })
-      res.json(removeBook)
+      const removeBook = await Book.findById({ _id: req.params.id });
+      res.json(removeBook);
     } catch (error) {
-      console.log("error with removeThatBook:", error)
+      console.log("error with removeThatBook:", error);
     }
-  }
+  },
 };

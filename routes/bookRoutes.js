@@ -13,7 +13,7 @@ router.get("/", getAll);
 
 router.post("/", postBook);
 
-router.update("/", updateThatBook);
+router.patch("/", updateThatBook);
 
 router.delete("/", removeThatBook);
 
