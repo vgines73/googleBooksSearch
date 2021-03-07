@@ -1,7 +1,20 @@
 const router = require("express").Router();
-const { test, getAll } = require("../controllers/BookController")
-router.get("/", test)
+const {
+  getOne,
+  getAll,
+  postBook,
+  updateThatBook,
+  removeThatBook,
+} = require("../controllers/BookController");
 
-router.get("/", getAll)
+router.get("/", getOne);
 
-module.exports = router
+router.get("/", getAll);
+
+router.post("/", postBook);
+
+router.update("/", updateThatBook);
+
+router.delete("/", removeThatBook);
+
+module.exports = router;
