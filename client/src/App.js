@@ -6,14 +6,15 @@ import Saved from "./Pages/Saved";
 import Search from "./Pages/Search";
 import Books from "./Pages/Books";
 import Nav from "./Components/Nav/Nav";
-const API_KEY = require("dotenv");
+// const API_KEY = require("dotenv");
+import Wrapper from './Components/Wrapper/Wrapper'
 function App() {
   // const [books, setBooks] = useState([])
   const getAll = async () => {
     const { data } = await axios.get(
-      "https://www.googleapis.com/books/v1/volumes?q=search+terms" + API_KEY
+      "https://www.googleapis.com/books/v1/volumes?q=stephen-king"
     );
-    console.log(data);
+    console.log(data.items);
   };
   useEffect(() => {
     // console.log("effect here");
@@ -21,17 +22,19 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <Nav />
-      <Router>
-        <Switch>
-          <Route path="/saved" component={Saved} />
-          <Route path="/search" component={Search} />
-          <Route path="/books">
-            <Books />
-          </Route>
-          <Route path="/" component={Books} />
-        </Switch>
-      </Router>
+      <Wrapper>
+        <Nav />
+        <Router>
+          <Switch>
+            <Route path="/saved" component={Saved} />
+            <Route path="/search" component={Search} />
+            <Route path="/books">
+              <Books />
+            </Route>
+            <Route path="/" component={Books} />
+          </Switch>
+        </Router>
+      </Wrapper>
     </div>
   );
 }
