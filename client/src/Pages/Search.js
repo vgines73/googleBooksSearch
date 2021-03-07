@@ -4,11 +4,16 @@ import Container from "../Components/Container/Container";
 import Wrapper from "../Components/Wrapper/Wrapper";
 import Row from "../Components/Row/Row";
 // import Cards from "../Components/Cards/Cards"
+import image from "../Components/images/books.jpg";
+import Hero from "../Components/Hero/Hero";
 
 const Search = () => {
   return (
     <div>
       <Wrapper>
+        <Row>
+          <Hero backgroundImage={image} />
+        </Row>
         <Container>
           <Row>
             <CardHeader

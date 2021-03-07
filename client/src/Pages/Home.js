@@ -1,12 +1,12 @@
 import React from "react";
-import CardHeader from "../Components/CardHeader/CardHeader";
 import Container from "../Components/Container/Container";
 import Row from "../Components/Row/Row";
 import Wrapper from "../Components/Wrapper/Wrapper";
 
+
 const styles = {
   titleStyles: {
-    fontSize: "100px",
+    fontSize: "90px",
   },
   blue: {
     color: "blue"
@@ -35,7 +35,8 @@ const Home = () => {
                   <span style={styles.orange}>o</span>
                   <span style={styles.blue}>g</span>
                   <span style={styles.green}>l</span>
-                  <span style={styles.red}>e</span>  
+                  <span style={styles.red}>e</span>
+                  <span> </span>  
                   <span style={styles.blue}>B</span>
                   <span style={styles.red}>o</span>
                   <span style={styles.orange}>o</span>

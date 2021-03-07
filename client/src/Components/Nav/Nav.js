@@ -28,6 +28,7 @@ const Nav = () => {
           <span style={styles.blue}>g</span>
           <span style={styles.green}>l</span>
           <span style={styles.red}>e</span>
+          <span> </span>
           <span style={styles.blue}>B</span>
           <span style={styles.red}>o</span>
           <span style={styles.orange}>o</span>
