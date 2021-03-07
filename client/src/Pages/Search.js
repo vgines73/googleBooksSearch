@@ -1,8 +1,9 @@
 import React from "react";
 import CardHeader from "../Components/CardHeader/CardHeader";
 import Container from "../Components/Container/Container";
-import Wrapper from '../Components/Wrapper/Wrapper'
-import Row from "../Components/Row/Row"
+import Wrapper from "../Components/Wrapper/Wrapper";
+import Row from "../Components/Row/Row";
+// import Cards from "../Components/Cards/Cards"
 
 const Search = () => {
   return (
@@ -34,7 +35,18 @@ const Search = () => {
               </button>
             </div>
           </Row>
-          <Row></Row>
+          <Row>
+            {/* {props.books.map((book, index) => (
+              <Cards
+                key={index}
+                title={book.title}
+                authors={book.authors}
+                description={book.description}
+                image={book.image}
+                link={book.link}
+              />
+            ))} */}
+          </Row>
         </Container>
       </Wrapper>
     </div>
