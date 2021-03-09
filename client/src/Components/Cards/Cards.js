@@ -1,10 +1,11 @@
 import React from "react";
-const styles = {
-  cardstyles: {
-    width: "18rem"
-  }
-}
+
 const Cards = (props) => {
+  const styles = {
+    cardstyles: {
+      width: "18rem"
+    }
+  }
   return (
     <div>
       <div className="card" style={styles.cardstyles}>

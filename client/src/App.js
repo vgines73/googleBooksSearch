@@ -11,9 +11,9 @@ import Wrapper from './Components/Wrapper/Wrapper'
 import Footer from "./Components/Footer/Footer";
 function App() {
   // const [books, setBooks] = useState([])
-  const getAll = async () => {
+  const getAll = async (query) => {
     const { data } = await axios.get(
-      "https://www.googleapis.com/books/v1/volumes?q=stephen-king"
+      "https://www.googleapis.com/books/v1/volumes/?q=" + query
     );
     console.log(data.items);
   };

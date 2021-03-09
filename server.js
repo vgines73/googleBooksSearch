@@ -1,18 +1,20 @@
+// bring in dependencies and set up port
 const express = require("express");
 const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 5000;
 
-
+// bring in connection
 require("./models/connection");
 
+// for middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// setup for heroku
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-
 // custom routes
 app.use("/books", require("./routes/bookRoutes"));
 

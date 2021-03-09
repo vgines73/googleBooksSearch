@@ -1,6 +1,11 @@
 const { Book } = require("../models");
 
 module.exports = {
+  // testing to see connection to backend
+  // test: (req, res) => {
+  //   res.send("success from backend");
+  // },
+  // get one book by id
   getOne: async (req, res) => {
     try {
       const findBook = await Book.findById(req.params.id);
@@ -8,20 +13,21 @@ module.exports = {
       res.json(findBook);
     } catch (error) {
       console.log("error with getOne:", error);
-      res.send(error)
+      res.send(error);
     }
   },
-
+  // get all books
   getAll: async (req, res) => {
     try {
-      const allBooks = await Book.find({});
+      const allBooks = await Book.find();
+      console.log(allBooks)
       res.json(allBooks);
     } catch (error) {
       console.log("error with getAll:", error);
-      res.send(error)
+      res.send(error);
     }
   },
-
+  // post a book
   postBook: async (req, res) => {
     try {
       const newPost = new Book({
@@ -34,7 +40,7 @@ module.exports = {
       res.json(await newPost.save());
     } catch (error) {
       console.log("error with postBook:", error);
-      res.send(error)
+      res.send(error);
     }
   },
 
@@ -51,7 +57,7 @@ module.exports = {
       res.json(await updateBook.save());
     } catch (error) {
       console.log("error with updateThatBook:", error);
-      res.send(error)
+      res.send(error);
     }
   },
 
@@ -61,7 +67,7 @@ module.exports = {
       res.json(removeBook);
     } catch (error) {
       console.log("error with removeThatBook:", error);
-      res.send(error)
+      res.send(error);
     }
   },
 };

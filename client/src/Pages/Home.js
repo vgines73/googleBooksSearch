@@ -19,7 +19,10 @@ const styles = {
   },
   green: {
     color: "green"
-  }
+  },
+  buttonStyles: {
+   textAlign: "center"
+  },
 };
 const Home = () => {
   return (
@@ -27,9 +30,9 @@ const Home = () => {
       <Wrapper>
         <Container>
           <Row>
-            <div class="card mt-5">
-              <div class="card-body">
-                <h5 class="card-title" style={styles.titleStyles}>
+            <div className="card mt-5">
+              <div className="card-body">
+                <h5 className="card-title text-center" style={styles.titleStyles}>
                   <span style={styles.blue}>G</span>
                   <span style={styles.red}>o</span>
                   <span style={styles.orange}>o</span>
@@ -43,10 +46,10 @@ const Home = () => {
                   <span style={styles.blue}>k</span>
                   <span style={styles.green}>s</span>
                 </h5><br/>
-                <p class="card-text">
+                <p className="card-text text-center">
                   Find and Save your Favorite Book
                 </p>
-                <a href="/search" class="btn btn-primary">
+                <a href="/search" className="btn btn-primary" style={styles.buttonStyles}>
                   Let's Go!
                 </a>
               </div>
