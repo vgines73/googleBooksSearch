@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const {
   // test,
-  getOne,
-  getAll,
+  getOneBook,
+  getAllBooks,
   postBook,
   updateThatBook,
   removeThatBook,
@@ -10,9 +10,9 @@ const {
 
 router.route("/")
 // .get(test)
-.get(getAll)
+.get(getAllBooks)
 .post(postBook);
 
-router.route("/:id").get(getOne).patch(updateThatBook).delete(removeThatBook);
+router.route("/:id").get(getOneBook).patch(updateThatBook).delete(removeThatBook);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
@@ -9,17 +9,27 @@ import Nav from "./Components/Nav/Nav";
 // const API_KEY = require("dotenv");
 import Wrapper from './Components/Wrapper/Wrapper'
 import Footer from "./Components/Footer/Footer";
+import StartPage from "./Pages/StartPage";
+import ErrorPage from "./Pages/ErrorPage";
 function App() {
-  // const [books, setBooks] = useState([])
-  const getAll = async (query) => {
-    const { data } = await axios.get(
-      "https://www.googleapis.com/books/v1/volumes/?q=" + query
-    );
-    console.log(data.items);
+  const [books, setBooks] = useState([])
+  const getAllBooks = async () => {
+    try {
+      //get data from the backend
+      const { data } = await axios.get(
+        // "https://www.googleapis.com/books/v1/volumes/?q=stephen-king"
+        "/books"
+      );
+      setBooks(data)
+      console.log(data);
+    } catch (error) {
+      console.log("error with getting data from backend to frontend:", error)
+    }
+
   };
   useEffect(() => {
     // console.log("effect here");
-    getAll();
+    getAllBooks();
   }, []);
   return (
     <div className="App">
@@ -30,9 +40,10 @@ function App() {
             <Route path="/saved" component={Saved} />
             <Route path="/search" component={Search} />
             <Route path="/home">
-              <Home />
+              <Home books={books}/>
             </Route>
-            <Route path="/" component={Home} />
+            <Route exact path="/" component={StartPage} />
+            <Route path="/" component={ErrorPage}/>
           </Switch>
         </Router>
         <Footer />

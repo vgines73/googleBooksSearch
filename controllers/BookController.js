@@ -6,7 +6,7 @@ module.exports = {
   //   res.send("success from backend");
   // },
   // get one book by id
-  getOne: async (req, res) => {
+  getOneBook: async (req, res) => {
     try {
       const findBook = await Book.findById(req.params.id);
       // res.send("success from getOne")
@@ -17,7 +17,7 @@ module.exports = {
     }
   },
   // get all books
-  getAll: async (req, res) => {
+  getAllBooks: async (req, res) => {
     try {
       const allBooks = await Book.find();
       console.log(allBooks)
@@ -43,11 +43,12 @@ module.exports = {
       res.send(error);
     }
   },
-
+  // updating a book by id
   updateThatBook: async (req, res) => {
     try {
-      const updateBook = await Book.findById({ _id: req.params.id });
+      const updateBook = await Book.findById(req.params.id);
       const { title, authors, description, image, link } = req.body;
+      // if they only update one of the values
       if (title) updateBook.title = title;
       if (authors) updateBook.authors = authors;
       if (description) updateBook.description = description;
@@ -60,10 +61,10 @@ module.exports = {
       res.send(error);
     }
   },
-
+  // deleting a book by id
   removeThatBook: async (req, res) => {
     try {
-      const removeBook = await Book.findByIdandDelete({ _id: req.params.id });
+      const removeBook = await Book.findByIdAndDelete(req.params.id);
       res.json(removeBook);
     } catch (error) {
       console.log("error with removeThatBook:", error);
