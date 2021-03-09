@@ -7,12 +7,12 @@ import Search from "./Pages/Search";
 import Home from "./Pages/Home";
 import Nav from "./Components/Nav/Nav";
 // const API_KEY = require("dotenv");
-import Wrapper from './Components/Wrapper/Wrapper'
+import Wrapper from "./Components/Wrapper/Wrapper";
 import Footer from "./Components/Footer/Footer";
 import StartPage from "./Pages/StartPage";
 import ErrorPage from "./Pages/ErrorPage";
 function App() {
-  const [books, setBooks] = useState([])
+  const [books, setBooks] = useState([]);
   const getAllBooks = async () => {
     try {
       //get data from the backend
@@ -20,12 +20,11 @@ function App() {
         // "https://www.googleapis.com/books/v1/volumes/?q=stephen-king"
         "/books"
       );
-      setBooks(data)
+      setBooks(data);
       console.log(data);
     } catch (error) {
-      console.log("error with getting data from backend to frontend:", error)
+      console.log("error with getting data from backend to frontend:", error);
     }
-
   };
   useEffect(() => {
     // console.log("effect here");
@@ -40,10 +39,10 @@ function App() {
             <Route path="/saved" component={Saved} />
             <Route path="/search" component={Search} />
             <Route path="/home">
-              <Home books={books}/>
+              <Home books={books} />
             </Route>
             <Route exact path="/" component={StartPage} />
-            <Route path="/" component={ErrorPage}/>
+            <Route path="/" component={ErrorPage} />
           </Switch>
         </Router>
         <Footer />

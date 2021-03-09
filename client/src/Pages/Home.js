@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Cards from "../Components/Cards/Cards";
 import Container from "../Components/Container/Container";
 import Row from "../Components/Row/Row";
@@ -26,10 +26,26 @@ const styles = {
   },
 };
 const Home = (props) => {
+  // setting initial state
+  const [books, setBooks] = useState([])
+  const [form, setForm] = useState({})
+
+  // loads all books and stores with setBooks
+  useEffect(() => {
+    loadAllBooks()
+  }, [])
+
+  // load all books and stores to books
+  function loadAllBooks() {
+    
+  }
   return (
     <div>
       <Wrapper>
         <Container>
+          <Row>
+
+          </Row>
           <Row>
             <div className="card mt-5">
               <div className="card-body">

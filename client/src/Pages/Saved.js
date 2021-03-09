@@ -12,13 +12,13 @@ const Saved = (props) => {
         <Container>
           <Row>
             <CardHeader
-              title="React Google Books Search"
+              title="Your Saved Search"
               text="Search for and Save Books of Interest"
             />
           </Row>
-          <Row>
           {props.books.map((book, index) => (
-          <Cards
+            <Row>
+              <Cards
                 key={index}
                 title={book.title}
                 authors={book.authors}
@@ -26,8 +26,8 @@ const Saved = (props) => {
                 image={book.image}
                 link={book.link}
               />
+            </Row>
           ))}
-          </Row>
         </Container>
       </Wrapper>
     </div>

@@ -15,10 +15,13 @@ const Search = (props) => {
   const [form, setForm] = useState({});
   const history = useHistory();
 
+  // handles the changes in input
   const onChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const {name, value} = e.target
+    setForm({ ...form, [name]: value });
   };
 
+  // form submittal
   const submit = async (e) => {
     e.preventDefault();
 
@@ -80,7 +83,7 @@ const Search = (props) => {
               </form>
             </div>
           </Row>
-          <Row>
+          {/* <Row>
             {props.books.map((book, index) => (
               <Cards
                 key={index}
@@ -91,7 +94,7 @@ const Search = (props) => {
                 link={book.link}
               />
             ))}
-          </Row>
+          </Row> */}
         </Container>
       </Wrapper>
     </div>
