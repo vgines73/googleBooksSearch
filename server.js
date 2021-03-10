@@ -16,7 +16,8 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 // custom routes
-app.use("/books", require("./routes/bookRoutes"));
+app.use("/api/books", require("./routes/bookRoutes"));
+
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));

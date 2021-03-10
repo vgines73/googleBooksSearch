@@ -3,28 +3,57 @@ import CardHeader from "../Components/CardHeader/CardHeader";
 import Container from "../Components/Container/Container";
 import Wrapper from "../Components/Wrapper/Wrapper";
 import Row from "../Components/Row/Row";
-// import Cards from "../Components/Cards/Cards"
+import Cards from "../Components/Cards/Cards";
 import image from "../Components/images/books.jpg";
 import Hero from "../Components/Hero/Hero";
 import axios from "axios";
+import API from "../utils/API";
 
 const Search = () => {
+  const [books, setBooks] = useState([]);
   const [form, setForm] = useState({});
+  const [query, setQuery] = useState("");
 
   // handles the changes in input
   const onChange = (e) => {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    setQuery(value);
+    // setForm({ ...form, [name]: value });
   };
 
   // form submittal
   const submit = async (e) => {
     e.preventDefault();
+    console.log(query);
+    try {
+      const result = await API.getBook(query);
+      console.log(result);
+      const modifyResult = result.data.items.map(item => {
+        item = item.volumeInfo
+        return {
+          title: item.title ? item.title: "no title for book",
+          authors: item.authors ? item.authors: ["no authors"],
+          description: item.description ? item.description: "no description",
+          image: item.imageLinks ? item.imageLinks.thumbnail: "no image",
+          link: item.infoLink ? item.infoLink: "no link available"
+        }
+      })
+      setBooks(modifyResult);
+    } catch (error) {
+      console.log(error);
+    }
+    return;
+
+  }
+
+  const handleSaveBook = async (e) => {
+    const dataValue = (e.target.getAttribute("data-value"));
+    const saveOneBook = books[dataValue]
+    console.log(saveOneBook);
 
     try {
-      const searchResult = await axios.post("/saved", {
-        book: form.book,
-      });
+      const searchResult = await axios.post("/api/books", saveOneBook)
+      console.log(searchResult);
     } catch (error) {
       console.log(error);
     }
@@ -67,18 +96,26 @@ const Search = () => {
               </form>
             </div>
           </Row>
-          {/* <Row>
-            {props.books.map((book, index) => (
+          <Row>
+            {books.map(( book , index) => {
+              // const volumeInfo = book.volumeInfo
+              // const image = volumeInfo.imageLinks.thumbnail
+              console.log(index, book);
+              return (
               <Cards
                 key={index}
                 title={book.title}
                 authors={book.authors}
                 description={book.description}
                 image={book.image}
-                link={book.link}
+                link={book.infoLink}
+                handleSaveBook={handleSaveBook}
+                index={index}
+                
               />
-            ))}
-          </Row> */}
+
+            )})}
+          </Row>
         </Container>
       </Wrapper>
     </div>
