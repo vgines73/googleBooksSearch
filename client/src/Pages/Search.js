@@ -77,9 +77,9 @@ const Search = (props) => {
                   type="submit"
                   id="button-addon2"
                   value="submit"
-                >
+                />
                   Search
-                </input>
+              
               </form>
             </div>
           </Row>

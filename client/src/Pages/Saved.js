@@ -6,6 +6,17 @@ import Row from "../Components/Row/Row";
 import Wrapper from "../Components/Wrapper/Wrapper";
 
 const Saved = (props) => {
+  const [books, setBooks] =useState([])
+  
+  useEffect(() => { 
+    loadAllBooks()
+  },[])
+
+  function loadAllBooks() {
+    API.getBooks()
+    .then((res) => setBooks(res.data))
+    .catch((error) => console.log(error));
+  }
   return (
     <div>
       <Wrapper>
@@ -17,9 +28,8 @@ const Saved = (props) => {
             />
           </Row>
           {props.books.map((book, index) => (
-            <Row>
+            <Row key={index}>
               <Cards
-                key={index}
                 title={book.title}
                 authors={book.authors}
                 description={book.description}

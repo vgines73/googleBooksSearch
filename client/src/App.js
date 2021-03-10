@@ -17,7 +17,7 @@ function App() {
     try {
       //get data from the backend
       const { data } = await axios.get(
-        // "https://www.googleapis.com/books/v1/volumes/?q=stephen-king"
+        
         "/books"
       );
       setBooks(data);
