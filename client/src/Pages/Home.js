@@ -25,7 +25,7 @@ const styles = {
     textAlign: "center",
   },
 };
-const Home = () => {
+const Home = (props) => {
   // setting initial state
   const [books, setBooks] = useState([]);
   const [form, setForm] = useState({});
@@ -33,7 +33,7 @@ const Home = () => {
   // loads all books and stores with setBooks
   useEffect(() => {
     loadAllBooks();
-    loadOneBook()
+    loadOneBook();
   }, []);
 
   // load all books and stores to books
@@ -47,13 +47,13 @@ const Home = () => {
   function loadOneBook(id) {
     API.getBook(id)
       .then((res) => setBooks(res.data))
-      .catch((error) => console.log(error))
+      .catch((error) => console.log(error));
   }
 
   // deletes a book from database by id
   function deleteBook(id) {
     API.deleteBook(id)
-      .then((res => loadAllBooks(res.data)))
+      .then((res) => loadAllBooks(res.data))
       .catch((error) => console.log(error));
   }
 
@@ -72,7 +72,7 @@ const Home = () => {
         authors: form.authors,
         description: form.description,
       })
-        .then((res) => loadAllBooks())
+        .then((res) => loadAllBooks(res.data))
         .catch((error) => console.log(error));
     }
   }
@@ -145,20 +145,20 @@ const Home = () => {
                 </button>
               </form>
             </Columns>
-            {books.map((book, index) => (
-              <Columns size="md-6" key={index}>
-                <Cards
-                  title={book.title}
-                  authors={book.authors}
-                  description={book.description}
-                  image={book.image}
-                  link={book.link}
-                />
-                <button onClick={() => deleteBook(book.id)}>delete</button>
-                <button onClick={()=> loadOneBook(book.id)}>update</button>
-              </Columns>
-            ))}
           </Row>
+          {props.books.map((book, index) => (
+            <Columns size="md-6" key={index}>
+              <Cards
+                title={book.title}
+                authors={book.authors}
+                description={book.description}
+                image={book.image}
+                link={book.link}
+              />
+              <button onClick={() => deleteBook(book.id)}>delete</button>
+              <button onClick={() => loadOneBook(book.id)}>update</button>
+            </Columns>
+          ))}
         </Container>
       </Wrapper>
     </div>
