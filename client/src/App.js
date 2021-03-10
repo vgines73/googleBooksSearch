@@ -16,10 +16,7 @@ function App() {
   const getAllBooks = async () => {
     try {
       //get data from the backend
-      const { data } = await axios.get(
-        
-        "/books"
-      );
+      const { data } = await axios.get("/books");
       setBooks(data);
       console.log(data);
     } catch (error) {
@@ -36,7 +33,9 @@ function App() {
         <Nav />
         <Router>
           <Switch>
-            <Route path="/saved" component={Saved} />
+            <Route path="/saved">
+              <Saved books={books}/>
+              </Route>
             <Route path="/search" component={Search} />
             <Route path="/home">
               <Home books={books} />

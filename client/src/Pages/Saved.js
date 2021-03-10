@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState, useEffect } from "react";
 import CardHeader from "../Components/CardHeader/CardHeader";
 import Cards from "../Components/Cards/Cards";
 import Container from "../Components/Container/Container";
 import Row from "../Components/Row/Row";
 import Wrapper from "../Components/Wrapper/Wrapper";
+import API from "../utils/API"
 
 const Saved = (props) => {
   const [books, setBooks] =useState([])
@@ -27,8 +28,8 @@ const Saved = (props) => {
               text="Search for and Save Books of Interest"
             />
           </Row>
-          {props.books.map((book, index) => (
-            <Row key={index}>
+          {props.books.map((book) => (
+            <Row >
               <Cards
                 title={book.title}
                 authors={book.authors}
