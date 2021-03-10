@@ -1,23 +1,23 @@
-import React, {useState, useEffect } from "react";
+import React from "react";
 import CardHeader from "../Components/CardHeader/CardHeader";
 import Cards from "../Components/Cards/Cards";
 import Container from "../Components/Container/Container";
 import Row from "../Components/Row/Row";
 import Wrapper from "../Components/Wrapper/Wrapper";
-import API from "../utils/API"
+// import API from "../utils/API"
 
 const Saved = (props) => {
-  const [books, setBooks] =useState([])
+  // const [books, setBooks] =useState([])
   
-  useEffect(() => { 
-    loadAllBooks()
-  },[])
+  // useEffect(() => { 
+  //   loadAllBooks()
+  // },[])
 
-  function loadAllBooks() {
-    API.getBooks()
-    .then((res) => setBooks(res.data))
-    .catch((error) => console.log(error));
-  }
+  // function loadAllBooks() {
+  //   API.getBooks()
+  //   .then((res) => setBooks(res.data))
+  //   .catch((error) => console.log(error));
+  // }
   return (
     <div>
       <Wrapper>
@@ -28,8 +28,8 @@ const Saved = (props) => {
               text="Search for and Save Books of Interest"
             />
           </Row>
-          {props.books.map((book) => (
-            <Row >
+          {props.books.map((book, index) => (
+            <Row key={index} >
               <Cards
                 title={book.title}
                 authors={book.authors}

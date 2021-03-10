@@ -4,9 +4,9 @@ import "./App.css";
 import axios from "axios";
 import Saved from "./Pages/Saved";
 import Search from "./Pages/Search";
-import Home from "./Pages/Home";
+
 import Nav from "./Components/Nav/Nav";
-// const API_KEY = require("dotenv");
+
 import Wrapper from "./Components/Wrapper/Wrapper";
 import Footer from "./Components/Footer/Footer";
 import StartPage from "./Pages/StartPage";

@@ -15,7 +15,7 @@ const Search = () => {
 
   // handles the changes in input
   const onChange = (e) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
     setQuery(value);
   };
 
@@ -32,10 +32,8 @@ const Search = () => {
           title: item.title ? item.title : "no title for book",
           authors: item.authors ? item.authors : ["no authors"],
           description: item.description ? item.description : "no description",
-          image: item.imageLinks ? item.imageLinks.thumbnail : `https://via.placeholder.com/300.png/09f/fff
-
-          C/O https://placeholder.com/`,
-          link: item.link ? item.link : "no link available",
+          image: item.imageLinks ? item.imageLinks.thumbnail : "no image",
+          link: item.previewLink ? item.previewLink : "no link available",
         };
       });
       setBooks(modifyResult);
@@ -82,7 +80,7 @@ const Search = () => {
                   name="book"
                   class="form-control"
                   placeholder="Search for a Book by Title or Author"
-                  aria-label="Search for a Book by Title or Author"
+                  aria-label="book"
                   aria-describedby="button-addon2"
                 />
                 <button
