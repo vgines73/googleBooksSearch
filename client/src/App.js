@@ -34,12 +34,9 @@ function App() {
         <Router>
           <Switch>
             <Route path="/saved">
-              <Saved books={books}/>
-              </Route>
-            <Route path="/search" component={Search} />
-            <Route path="/home">
-              <Home />
+              <Saved books={books} />
             </Route>
+            <Route path="/search" component={Search} />
             <Route exact path="/" component={StartPage} />
             <Route path="/" component={ErrorPage} />
           </Switch>

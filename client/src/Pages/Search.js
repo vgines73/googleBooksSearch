@@ -11,14 +11,12 @@ import API from "../utils/API";
 
 const Search = () => {
   const [books, setBooks] = useState([]);
-  const [form, setForm] = useState({});
   const [query, setQuery] = useState("");
 
   // handles the changes in input
   const onChange = (e) => {
     const { name, value } = e.target;
     setQuery(value);
-    // setForm({ ...form, [name]: value });
   };
 
   // form submittal
@@ -28,31 +26,32 @@ const Search = () => {
     try {
       const result = await API.getBook(query);
       console.log(result);
-      const modifyResult = result.data.items.map(item => {
-        item = item.volumeInfo
+      const modifyResult = result.data.items.map((item) => {
+        item = item.volumeInfo;
         return {
-          title: item.title ? item.title: "no title for book",
-          authors: item.authors ? item.authors: ["no authors"],
-          description: item.description ? item.description: "no description",
-          image: item.imageLinks ? item.imageLinks.thumbnail: "no image",
-          link: item.infoLink ? item.infoLink: "no link available"
-        }
-      })
+          title: item.title ? item.title : "no title for book",
+          authors: item.authors ? item.authors : ["no authors"],
+          description: item.description ? item.description : "no description",
+          image: item.imageLinks ? item.imageLinks.thumbnail : `https://via.placeholder.com/300.png/09f/fff
+
+          C/O https://placeholder.com/`,
+          link: item.link ? item.link : "no link available",
+        };
+      });
       setBooks(modifyResult);
     } catch (error) {
       console.log(error);
     }
     return;
-
-  }
+  };
 
   const handleSaveBook = async (e) => {
-    const dataValue = (e.target.getAttribute("data-value"));
-    const saveOneBook = books[dataValue]
+    const dataValue = e.target.getAttribute("data-value");
+    const saveOneBook = books[dataValue];
     console.log(saveOneBook);
 
     try {
-      const searchResult = await axios.post("/api/books", saveOneBook)
+      const searchResult = await axios.post("/api/books", saveOneBook);
       console.log(searchResult);
     } catch (error) {
       console.log(error);
@@ -75,46 +74,46 @@ const Search = () => {
         <br />
         <Container>
           <Row>
-            <div className="input-group mb-3">
-              <form onSubmit={submit}>
+            <form onSubmit={submit}>
+              <div class="input-group mb-3">
                 <input
                   onChange={onChange}
                   type="text"
                   name="book"
-                  className="form-control"
-                  placeholder="Search for a Book"
-                  aria-label="book"
+                  class="form-control"
+                  placeholder="Search for a Book by Title or Author"
+                  aria-label="Search for a Book by Title or Author"
                   aria-describedby="button-addon2"
                 />
-                <input
-                  onChange={submit}
-                  className="btn btn-success"
+                <button
+                  onChange={onChange}
+                  class="btn btn-success"
                   type="submit"
                   id="button-addon2"
                   value="search"
-                />
-              </form>
-            </div>
+                >
+                  search
+                </button>
+              </div>
+
+            </form>
           </Row>
           <Row>
-            {books.map(( book , index) => {
-              // const volumeInfo = book.volumeInfo
-              // const image = volumeInfo.imageLinks.thumbnail
+            {books.map((book, index) => {
               console.log(index, book);
               return (
-              <Cards
-                key={index}
-                title={book.title}
-                authors={book.authors}
-                description={book.description}
-                image={book.image}
-                link={book.infoLink}
-                handleSaveBook={handleSaveBook}
-                index={index}
-                
-              />
-
-            )})}
+                <Cards
+                  key={index}
+                  title={book.title}
+                  authors={book.authors}
+                  description={book.description}
+                  image={book.image}
+                  link={book.link}
+                  handleSaveBook={handleSaveBook}
+                  index={index}
+                />
+              );
+            })}
           </Row>
         </Container>
       </Wrapper>

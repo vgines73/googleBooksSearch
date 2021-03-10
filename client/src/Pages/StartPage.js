@@ -21,6 +21,9 @@ const styles = {
   green: {
     color: "green"
   },
+  buttonstyles: {
+    alignContent: "center"
+  }
 };
 const StartPage = () => {
   const history = useHistory();
@@ -48,7 +51,7 @@ const StartPage = () => {
                 <p className="card-text text-center">
                   Find and Save your Favorite Book
                 </p>
-                <button onClick={() => history.push("/search")} className="btn btn-primary">
+                <button onClick={() => history.push("/search")} style={styles.buttonstyles} className="btn btn-primary">
                   Let's Go!
                 </button>
               </div>
