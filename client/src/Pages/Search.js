@@ -1,23 +1,19 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import CardHeader from "../Components/CardHeader/CardHeader";
 import Container from "../Components/Container/Container";
 import Wrapper from "../Components/Wrapper/Wrapper";
 import Row from "../Components/Row/Row";
-import Cards from "../Components/Cards/Cards"
+// import Cards from "../Components/Cards/Cards"
 import image from "../Components/images/books.jpg";
 import Hero from "../Components/Hero/Hero";
 import axios from "axios";
-import UserContext from "../Components/UserContext/UserContext";
-import { useHistory } from "react-router-dom";
 
-const Search = (props) => {
-  const { userData, setUserData } = useContext(UserContext);
+const Search = () => {
   const [form, setForm] = useState({});
-  const history = useHistory();
 
   // handles the changes in input
   const onChange = (e) => {
-    const {name, value} = e.target
+    const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
 
@@ -29,21 +25,10 @@ const Search = (props) => {
       const searchResult = await axios.post("/saved", {
         book: form.book,
       });
-
-      setUserData({
-        book: searchResult.data,
-      });
-      localStorage.setItem("usersBooks", searchResult.data);
-      history.pushState("/");
-
     } catch (error) {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    if (userData.book) history.pushState("/");
-  }, [userData.book, history]);
 
   return (
     <div>
@@ -73,13 +58,12 @@ const Search = (props) => {
                   aria-describedby="button-addon2"
                 />
                 <input
+                  onChange={submit}
                   className="btn btn-success"
                   type="submit"
                   id="button-addon2"
-                  value="submit"
+                  value="search"
                 />
-                  Search
-              
               </form>
             </div>
           </Row>

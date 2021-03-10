@@ -80,7 +80,6 @@ const Home = (props) => {
     <div>
       <Wrapper>
         <Container>
-          <Row></Row>
           <Row>
             <div className="card mt-5">
               <div className="card-body">
@@ -116,7 +115,7 @@ const Home = (props) => {
             </div>
           </Row>
           <Row>
-            <Columns size="md-6">
+            <Columns size="md-12">
               <h1>Save a Book</h1>
               <form>
                 <input
@@ -125,18 +124,21 @@ const Home = (props) => {
                   type="text"
                   placeholder="Title (required)"
                 />
+                <br />
                 <input
                   onChange={onChange}
                   name="authors"
                   type="text"
                   placeholder="Authors (required)"
                 />
+                <br />
                 <input
                   onChange={onChange}
                   name="description"
                   type="text"
                   placeholder="Description (required)"
                 />
+                <br />
                 <button
                   disabled={!(form.title && form.authors && form.description)}
                   onClick={handleFormSubmit}
@@ -147,7 +149,7 @@ const Home = (props) => {
             </Columns>
           </Row>
           {props.books.map((book, index) => (
-            <Columns size="md-6" key={index}>
+            <Columns size="md-4" key={index}>
               <Cards
                 title={book.title}
                 authors={book.authors}
@@ -155,8 +157,18 @@ const Home = (props) => {
                 image={book.image}
                 link={book.link}
               />
-              <button onClick={() => deleteBook(book.id)}>delete</button>
-              <button onClick={() => loadOneBook(book.id)}>update</button>
+              <button
+                className="btn btn-danger"
+                onClick={() => deleteBook(book.id)}
+              >
+                delete
+              </button>
+              <button
+                className="btn btn-warning"
+                onClick={() => loadOneBook(book.id)}
+              >
+                update
+              </button>
             </Columns>
           ))}
         </Container>
