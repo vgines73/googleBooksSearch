@@ -12,21 +12,21 @@ import Footer from "./Components/Footer/Footer";
 import StartPage from "./Pages/StartPage";
 import ErrorPage from "./Pages/ErrorPage";
 function App() {
-  // const [books, setBooks] = useState([]);
-  // const getAllBooks = async () => {
-  //   try {
-  //     //get data from the backend
-  //     const { data } = await axios.get("/api/books");
-  //     setBooks(data);
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.log("error with getting data from backend to frontend:", error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   // console.log("effect here");
-  //   getAllBooks();
-  // }, []);
+  const [books, setBooks] = useState([]);
+  const getAllBooks = async () => {
+    try {
+      //get data from the database
+      const { data } = await axios.get("/api/books");
+      setBooks(data);
+      console.log(data);
+    } catch (error) {
+      console.log("error with getting data from backend to frontend:", error);
+    }
+  };
+  useEffect(() => {
+    // console.log("effect here");
+    getAllBooks();
+  }, []);
   return (
     <div className="App">
       <Wrapper>
@@ -34,11 +34,11 @@ function App() {
         <Router>
           <Switch>
             <Route path="/saved">
-              <Saved />
+              <Saved books={books}/>
               </Route>
             <Route path="/search" component={Search} />
             <Route path="/home">
-              <Home  />
+              <Home />
             </Route>
             <Route exact path="/" component={StartPage} />
             <Route path="/" component={ErrorPage} />

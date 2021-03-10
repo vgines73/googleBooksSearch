@@ -48,7 +48,7 @@ const StartPage = () => {
                 <p className="card-text text-center">
                   Find and Save your Favorite Book
                 </p>
-                <button onClick={() => history.push("/saved")} className="btn btn-primary">
+                <button onClick={() => history.push("/search")} className="btn btn-primary">
                   Let's Go!
                 </button>
               </div>
