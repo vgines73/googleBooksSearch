@@ -29,13 +29,15 @@ const Saved = (props) => {
             />
           </Row>
           {props.books.map((book, index) => (
-            <Row key={index} >
+            <Row >
               <Cards
+                key={index}
                 title={book.title}
                 authors={book.authors}
                 description={book.description}
                 image={book.image}
                 link={book.link}
+                index={index}
               />
             </Row>
           ))}
