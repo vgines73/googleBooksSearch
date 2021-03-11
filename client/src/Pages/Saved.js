@@ -5,7 +5,7 @@ import Container from "../Components/Container/Container";
 import Row from "../Components/Row/Row";
 import Wrapper from "../Components/Wrapper/Wrapper";
 import API from "../utils/API";
-import axios from "axios";
+// import axios from "axios";
 import Hero from "../Components/Hero/Hero";
 import image from "../Components/images/candle.jpg"
 
@@ -73,7 +73,7 @@ const Saved = (props) => {
                 link={book.link}
                 index={index}
                 deleteBook={() => deleteThisBook(book._id)}
-                // deleteBook={deleteBook} used for async
+                // deleteBook={deleteBook} used for async function i commented out
               />
             </Row>
           ))}
