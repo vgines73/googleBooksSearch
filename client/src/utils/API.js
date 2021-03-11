@@ -14,11 +14,14 @@ export default {
   // deletes a book using the id from database
   deleteBook: function (id) {
     // console.log(id) comes back undefined
-    return axios.get("api/books/" + id);
+    return axios.delete("api/books/" + id);
   },
 
   // saves book into database
   saveBook: function (bookData) {
     return axios.post("/books", bookData);
+  },
+  getBooksData: function () {
+    return axios.get("api/books/");
   },
 };

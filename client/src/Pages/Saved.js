@@ -6,7 +6,6 @@ import Row from "../Components/Row/Row";
 import Wrapper from "../Components/Wrapper/Wrapper";
 import API from "../utils/API";
 import axios from "axios";
-// import { load } from "dotenv/types";
 
 const Saved = (props) => {
   // setting initial state
@@ -14,33 +13,41 @@ const Saved = (props) => {
 
   // load all books and store them with setBooks
   useEffect(() => {
+    console.log("useeffect")
     loadAllBooks();
   }, []);
 
   // loads all books and sets them to books
   function loadAllBooks() {
-    API.getBooks()
+    API.getBooksData()
       .then((res) => setBooks(res.data))
       .catch((error) => console.log(error));
   }
 
-  // Deletes a book from the database then reloads all books
-  const deleteBook = async (e) => {
-    const dataValue = e.target.getAttribute("data-value");
-    const deleteOneBook = props.books[dataValue];
-    console.log(deleteOneBook);
+  // Deletes a book from the database then reloads all books\
+  // this works too but still doesn't refresh the page after deleting
+  // const deleteBook = async (e) => {
+  //   const dataValue = e.target.getAttribute("data-value");
+  //   const deleteOneBook = props.books[dataValue];
+  //   console.log(deleteOneBook);
 
-    try {
-      const deleteResult = await axios.delete(
-        `/api/books/${deleteOneBook._id}`
-      );
-      console.log(deleteResult);
-      loadAllBooks();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //   try {
+  //     const deleteResult = await axios.delete(
+  //       `/api/books/${deleteOneBook._id}`
+  //     );
+  //     console.log(deleteResult);
+  //     loadAllBooks();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
+  // delete a book using id but doens't refresh the page after deleting
+  function deleteThisBook(id) {
+    API.deleteBook(id)
+      .then((res) => loadAllBooks())
+      .catch((error) => console.log(error));
+  }
   return (
     <div>
       <Wrapper>
@@ -60,7 +67,8 @@ const Saved = (props) => {
                 image={book.image}
                 link={book.link}
                 index={index}
-                deleteBook={deleteBook}
+                deleteBook={()=>deleteThisBook(book._id)}
+                // deleteBook={deleteBook} used for async
               />
             </Row>
           ))}
