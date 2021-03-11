@@ -63,16 +63,18 @@ const Search = () => {
   return (
     <div>
       <Wrapper>
-        <Row>
-          <Hero backgroundImage={image} />
-        </Row>
+        <Container>
+          <Row>
+            <Hero backgroundImage={image} />
+          </Row>
+          <Row>
+            <CardHeader
+              title="React Google Books Search"
+              text="Search for and Save Books of Interest"
+            />
+          </Row>
+        </Container>
 
-        <Row>
-          <CardHeader
-            title="React Google Books Search"
-            text="Search for and Save Books of Interest"
-          />
-        </Row>
         <br />
         <Container>
           <Row>

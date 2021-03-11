@@ -3,7 +3,7 @@ import React from "react";
 const Cards = (props) => {
   const styles = {
     cardstyles: {
-      width: "800px",
+      width: "100%",
       marginTop: "50px",
       marginRight: "10px",
       marginLeft: "0",
@@ -25,7 +25,7 @@ const Cards = (props) => {
               src={props.image}
               className="card-img-top"
               style={styles.imageStyles}
-              alt="book"
+              alt={props.title}
             />
           </div>
           <div className="col md-8">

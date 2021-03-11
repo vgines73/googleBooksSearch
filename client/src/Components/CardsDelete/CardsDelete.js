@@ -3,7 +3,7 @@ import React from "react";
 const CardsDelete = (props) => {
   const styles = {
     cardstyles: {
-      width: "800px",
+      width: "100%",
       marginTop: "50px",
       marginRight: "10px",
       marginLeft: "0",
@@ -25,7 +25,7 @@ const CardsDelete = (props) => {
               src={props.image}
               className="card-img-top"
               style={styles.imageStyles}
-              alt="book"
+              alt={props.title}
             />
           </div>
           <div className="col md-8">
@@ -41,7 +41,6 @@ const CardsDelete = (props) => {
                 onClick={props.deleteBook}
                 style={styles.buttonstyles}
                 className="btn btn-primary"
-                target="blank"
               >
                 Delete
               </button>

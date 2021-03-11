@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import CardHeader from "../Components/CardHeader/CardHeader";
-// import Cards from "../Components/Cards/Cards";
 import CardsDelete from "../Components/CardsDelete/CardsDelete";
 import Container from "../Components/Container/Container";
 import Row from "../Components/Row/Row";
 import Wrapper from "../Components/Wrapper/Wrapper";
 import API from "../utils/API";
+import axios from "axios";
+import { load } from "dotenv/types";
 
 const Saved = (props) => {
   // setting initial state
@@ -24,12 +25,27 @@ const Saved = (props) => {
   }
 
   // Deletes a book from the database with an id then reloads all books
-  function deleteBook(id) {
-    API.deleteBook(id)
-    console.log(id);
-      // .then((res) => loadAllBooks())
-      // .catch((err) => console.log(err));
-  }
+  // tried this and it didn't work
+  const deleteBook = async (e) => {
+    const dataValue = e.target.getAttribute("data-value");
+    const deleteOneBook = books[dataValue];
+    console.log(deleteOneBook);
+
+    try {
+      const deleteResult = await axios.delete("/api/books", deleteOneBook);
+      console.log(deleteResult);
+      loadAllBooks()
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //tried this and it didn't work
+  // function deleteBook(id) {
+  //   API.deleteBook(id)
+  //   .then(res => loadAllBooks())
+  //   .catch(err => console.log(err))
+  // }
 
   return (
     <div>
@@ -50,7 +66,7 @@ const Saved = (props) => {
                 image={book.image}
                 link={book.link}
                 index={index}
-                deleteBook={() => deleteBook(book.id)}
+                deleteBook={deleteBook}
               />
             </Row>
           ))}
