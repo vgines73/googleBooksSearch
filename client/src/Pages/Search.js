@@ -15,7 +15,7 @@ const Search = () => {
 
   // handles the changes in input
   const onChange = (e) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
     setQuery(value);
   };
 
@@ -77,19 +77,19 @@ const Search = () => {
         <Container>
           <Row>
             <form onSubmit={submit}>
-              <div class="input-group mb-3">
+              <div className="input-group mb-3">
                 <input
                   onChange={onChange}
                   type="text"
                   name="book"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Search for a Book by Title or Author"
                   aria-label="book"
                   aria-describedby="button-addon2"
                 />
                 <button
                   onChange={onChange}
-                  class="btn btn-success"
+                  className="btn btn-success"
                   type="submit"
                   id="button-addon2"
                   value="search"

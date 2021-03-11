@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cards = (props) => {
+const CardsDelete = (props) => {
   const styles = {
     cardstyles: {
       width: "800px",
@@ -38,12 +38,12 @@ const Cards = (props) => {
               </a>
               <button
                 data-value={props.index}
-                onClick={props.handleSaveBook}
+                onClick={props.deleteBook}
                 style={styles.buttonstyles}
                 className="btn btn-primary"
                 target="blank"
               >
-                Save
+                Delete
               </button>
             </div>
           </div>
@@ -53,4 +53,4 @@ const Cards = (props) => {
   );
 };
 
-export default Cards;
+export default CardsDelete;

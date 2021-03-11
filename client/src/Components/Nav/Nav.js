@@ -2,19 +2,19 @@ import React from "react";
 const styles = {
   blue: {
     color: "blue",
-    fontWeight: "bolder"
+    fontWeight: "bolder",
   },
   red: {
     color: "red",
-    fontWeight: "bolder"
+    fontWeight: "bolder",
   },
   orange: {
     color: "orange",
-    fontWeight: "bolder"
+    fontWeight: "bolder",
   },
   green: {
     color: "green",
-    fontWeight: "bolder"
+    fontWeight: "bolder",
   },
 };
 const Nav = () => {

@@ -13,7 +13,7 @@ export default {
 
   // deletes a book
   deleteBook: function (id) {
-    return axios.get("https://www.googleapis.com/books/v1/volumes/?q=?" + id);
+    return axios.get("/books/" + id);
   },
 
   saveBook: function (bookData) {
