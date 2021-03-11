@@ -6,7 +6,7 @@ import Row from "../Components/Row/Row";
 import Wrapper from "../Components/Wrapper/Wrapper";
 import API from "../utils/API";
 import axios from "axios";
-import { load } from "dotenv/types";
+// import { load } from "dotenv/types";
 
 const Saved = (props) => {
   // setting initial state
@@ -24,28 +24,22 @@ const Saved = (props) => {
       .catch((error) => console.log(error));
   }
 
-  // Deletes a book from the database with an id then reloads all books
-  // tried this and it didn't work
+  // Deletes a book from the database then reloads all books
   const deleteBook = async (e) => {
     const dataValue = e.target.getAttribute("data-value");
-    const deleteOneBook = books[dataValue];
+    const deleteOneBook = props.books[dataValue];
     console.log(deleteOneBook);
 
     try {
-      const deleteResult = await axios.delete("/api/books", deleteOneBook);
+      const deleteResult = await axios.delete(
+        `/api/books/${deleteOneBook._id}`
+      );
       console.log(deleteResult);
-      loadAllBooks()
+      loadAllBooks();
     } catch (error) {
       console.log(error);
     }
   };
-
-  //tried this and it didn't work
-  // function deleteBook(id) {
-  //   API.deleteBook(id)
-  //   .then(res => loadAllBooks())
-  //   .catch(err => console.log(err))
-  // }
 
   return (
     <div>
