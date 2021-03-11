@@ -6,6 +6,8 @@ import Row from "../Components/Row/Row";
 import Wrapper from "../Components/Wrapper/Wrapper";
 import API from "../utils/API";
 import axios from "axios";
+import Hero from "../Components/Hero/Hero";
+import image from "../Components/images/candle.jpg"
 
 const Saved = (props) => {
   // setting initial state
@@ -13,7 +15,7 @@ const Saved = (props) => {
 
   // load all books and store them with setBooks
   useEffect(() => {
-    console.log("useeffect")
+    console.log("useeffect");
     loadAllBooks();
   }, []);
 
@@ -53,6 +55,9 @@ const Saved = (props) => {
       <Wrapper>
         <Container>
           <Row>
+            <Hero backgroundImage={image} />
+          </Row>
+          <Row>
             <CardHeader
               title="Your Saved Search"
               text="Search for and Save Books of Interest"
@@ -67,7 +72,7 @@ const Saved = (props) => {
                 image={book.image}
                 link={book.link}
                 index={index}
-                deleteBook={()=>deleteThisBook(book._id)}
+                deleteBook={() => deleteThisBook(book._id)}
                 // deleteBook={deleteBook} used for async
               />
             </Row>

@@ -40,7 +40,7 @@ const CardsDelete = (props) => {
                 data-value={props.index}
                 onClick={props.deleteBook}
                 style={styles.buttonstyles}
-                className="btn btn-primary"
+                className="btn btn-danger"
               >
                 Delete
               </button>
