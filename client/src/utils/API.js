@@ -11,11 +11,13 @@ export default {
     return axios.get("https://www.googleapis.com/books/v1/volumes/?q=" + query);
   },
 
-  // deletes a book
+  // deletes a book using the id
   deleteBook: function (id) {
+    // console.log(id) comes back undefined
     return axios.get("/books/" + id);
   },
 
+  // saves book into database
   saveBook: function (bookData) {
     return axios.post("/books", bookData);
   },

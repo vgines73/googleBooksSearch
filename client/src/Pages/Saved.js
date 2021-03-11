@@ -25,11 +25,10 @@ const Saved = (props) => {
 
   // Deletes a book from the database with an id then reloads all books
   function deleteBook(id) {
-    API.deleteBook(id);
-    console
-      .log("hi from deleteBook")
-      .then((res) => loadAllBooks(res.data))
-      .catch((err) => console.log(err));
+    API.deleteBook(id)
+    console.log(id);
+      // .then((res) => loadAllBooks())
+      // .catch((err) => console.log(err));
   }
 
   return (
@@ -51,8 +50,7 @@ const Saved = (props) => {
                 image={book.image}
                 link={book.link}
                 index={index}
-                deleteBook={deleteBook}
-                id="id"
+                deleteBook={() => deleteBook(book.id)}
               />
             </Row>
           ))}
