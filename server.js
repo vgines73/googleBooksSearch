@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 5000;
+const dotenv = require("dotenv").config()
 
 // bring in connection
 require("./models/connection");

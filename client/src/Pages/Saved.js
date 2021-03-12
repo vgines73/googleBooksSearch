@@ -5,11 +5,10 @@ import Container from "../Components/Container/Container";
 import Row from "../Components/Row/Row";
 import Wrapper from "../Components/Wrapper/Wrapper";
 import API from "../utils/API";
-// import axios from "axios";
 import Hero from "../Components/Hero/Hero";
 import image from "../Components/images/candle.jpg";
 
-const Saved = (props) => {
+const Saved = () => {
   // setting initial state
   const [books, setBooks] = useState([]);
 
@@ -30,37 +29,13 @@ const Saved = (props) => {
       .catch((error) => console.log(error));
   }
 
-  // Deletes a book from the database then reloads all books\
-  // this works too but still doesn't refresh the page after deleting
-  // const deleteBook = async (e) => {
-  //   const dataValue = e.target.getAttribute("data-value");
-  //   const deleteOneBook = props.books[dataValue];
-  //   console.log(deleteOneBook);
-
-  //   try {
-  //     const deleteResult = await axios.delete(
-  //       `/api/books/${deleteOneBook._id}`
-  //     );
-  //     console.log(deleteResult);
-  //     loadAllBooks();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   // delete a book using id but doesn't refresh the page after deleting
   function deleteThisBook(id) {
     console.log("deletethisbook");
 
     API.deleteBook(id)
       .then((res) => loadAllBooks())
-      .then((res) => reloadPage())
       .catch((error) => console.log(error));
-  }
-
-  // function to reload page. couldn't figure out why it wouln't refresh so did another .then on line 57
-  function reloadPage() {
-    window.location.reload();
   }
   return (
     <div>
@@ -75,7 +50,7 @@ const Saved = (props) => {
               text="Search for and Save Books of Interest"
             />
           </Row>
-          {props.books.map((book, index) => (
+          {books.map((book, index) => (
             <Row key={index}>
               <CardsDelete
                 title={book.title}
@@ -85,7 +60,6 @@ const Saved = (props) => {
                 link={book.link}
                 index={index}
                 deleteBook={() => deleteThisBook(book._id)}
-                // deleteBook={deleteBook} used for async function i commented out
               />
             </Row>
           ))}
