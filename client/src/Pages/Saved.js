@@ -7,7 +7,7 @@ import Wrapper from "../Components/Wrapper/Wrapper";
 import API from "../utils/API";
 // import axios from "axios";
 import Hero from "../Components/Hero/Hero";
-import image from "../Components/images/candle.jpg"
+import image from "../Components/images/candle.jpg";
 
 const Saved = (props) => {
   // setting initial state
@@ -21,8 +21,12 @@ const Saved = (props) => {
 
   // loads all books and sets them to books
   function loadAllBooks() {
+    console.log("gettingallbooks");
     API.getBooksData()
-      .then((res) => setBooks(res.data))
+      .then((res) => {
+        console.log(res.data);
+        setBooks(res.data);
+      })
       .catch((error) => console.log(error));
   }
 
@@ -44,11 +48,19 @@ const Saved = (props) => {
   //   }
   // };
 
-  // delete a book using id but doens't refresh the page after deleting
+  // delete a book using id but doesn't refresh the page after deleting
   function deleteThisBook(id) {
+    console.log("deletethisbook");
+
     API.deleteBook(id)
       .then((res) => loadAllBooks())
+      .then((res) => reloadPage())
       .catch((error) => console.log(error));
+  }
+
+  // function to reload page. couldn't figure out why it wouln't refresh so did another .then on line 57
+  function reloadPage() {
+    window.location.reload();
   }
   return (
     <div>

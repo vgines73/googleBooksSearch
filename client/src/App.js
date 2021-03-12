@@ -18,7 +18,7 @@ function App() {
       //get data from the database
       const { data } = await axios.get("/api/books");
       setBooks(data);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.log("error with getting data from backend to frontend:", error);
     }

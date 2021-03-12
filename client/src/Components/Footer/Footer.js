@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   const styles = {
     footerSpacingStyle: {
-      marginTop: "180px"
+      marginTop: "110px"
     },
     footerStyle: {
       color: "red",
